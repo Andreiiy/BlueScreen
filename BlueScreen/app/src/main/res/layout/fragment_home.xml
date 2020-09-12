@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    tools:context=".ui.home.HomeFragment">
+
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.viewpager.widget.ViewPager
+                android:id="@+id/slidePager"
+                android:layout_width="match_parent"
+                android:layout_height="250dp">
+
+
+            </androidx.viewpager.widget.ViewPager>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="Popular:"
+                android:textColor="@color/colorSky"
+                android:textSize="24sp" />
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/listPopularMuvies"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:orientation="horizontal"
+                app:reverseLayout="true"
+                tools:layout_editor_absoluteY="260dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="Top rated:"
+                android:textColor="@color/colorSky"
+                android:textSize="24sp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/listTopratedMovies"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                tools:layout_editor_absoluteY="260dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="Upcoming:"
+                android:textColor="@color/colorSky"
+                android:textSize="24sp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/listUpcomingMuvies"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                tools:layout_editor_absoluteY="260dp" />
+
+
+        </LinearLayout>
+    </ScrollView>
+
+</FrameLayout>
