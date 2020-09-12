@@ -42,7 +42,6 @@ public class SlidePagerAdapter extends PagerAdapter {
          String IMAGE_SIZE = "w200";
          Result movie = (Result)(listMovies.get(position));
         String thumbURL = IMAGE_URL + IMAGE_SIZE + listMovies.get(position).getBackdropPath();
-        //String thumbURL2 ="https://image.tmdb.org/t/p/w200/wwemzKWzjKYJFfCeiB57q3r4Bcm.png";
         Picasso.get().load(thumbURL).into(slideImage);
 
         slideTitle.setText(listMovies.get(position).getTitle());

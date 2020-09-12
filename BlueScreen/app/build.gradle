@@ -15,23 +15,22 @@ android {
     }
 
 
-
     buildTypes {
 
-        debug{
-            buildConfigField 'String',"API_KEY",movieapi
-            resValue 'string',"api_key",movieapi
+        debug {
+            buildConfigField 'String', "API_KEY", movieapi
+            resValue 'string', "api_key", movieapi
         }
 
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
 
-            buildConfigField 'String',"API_KEY",movieapi
-            resValue 'string',"api_key",movieapi
+            buildConfigField 'String', "API_KEY", movieapi
+            resValue 'string', "api_key", movieapi
         }
     }
-dataBinding.enabled = true
+    dataBinding.enabled = true
 }
 
 dependencies {
@@ -58,7 +57,7 @@ dependencies {
     def paging_version = "3.0.0-alpha04"
     implementation "androidx.paging:paging-runtime:$paging_version"
     // alternatively - without Android dependencies for tests
-   // testImplementation "androidx.paging:paging-common:$paging_version"
+    // testImplementation "androidx.paging:paging-common:$paging_version"
     // optional - RxJava2 support
     //implementation "androidx.paging:paging-rxjava2:$paging_version"
 

@@ -1,36 +1,31 @@
 package com.example.bluescreen.ui.popular;
 
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.paging.PagedList;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.bluescreen.R;
-import com.example.bluescreen.adapters.MoviePageListAdapter;
-import com.example.bluescreen.adapters.SlidePagerAdapter;
+import com.example.bluescreen.adapters.CategoriotMoviesListAdapter;
 import com.example.bluescreen.models.Result;
-import com.example.bluescreen.ui.toprated.TopRatedViewModel;
 import com.example.bluescreen.viewmodels.MainViewModel;
 import com.example.bluescreen.viewmodels.MainViewModelFactory;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class PopularFragment extends Fragment {
 
     private RecyclerView listPopularMovies;
     private LinearLayoutManager layoutManager;
-    public MoviePageListAdapter adapter;
+    public CategoriotMoviesListAdapter adapter;
     private MainViewModel viewModel;
     private String location = "popular";
     private View root;
@@ -60,10 +55,12 @@ public class PopularFragment extends Fragment {
 
         listPopularMovies=(RecyclerView)root.findViewById(R.id.listMovies);
 
-        adapter = new MoviePageListAdapter(true);
+        adapter = new CategoriotMoviesListAdapter(getContext());
 
-
+if(getActivity().getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT)
         listPopularMovies.setLayoutManager(new LinearLayoutManager(getActivity()));
+else
+    listPopularMovies.setLayoutManager(new GridLayoutManager(getActivity(),3));
 
         listPopularMovies.setHasFixedSize(true);
 

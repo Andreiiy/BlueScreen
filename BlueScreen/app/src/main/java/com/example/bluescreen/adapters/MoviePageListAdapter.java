@@ -12,13 +12,14 @@ import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.bluescreen.R;
+import com.example.bluescreen.databinding.ItemBigBinding;
 import com.example.bluescreen.databinding.ItemVideoBinding;
 import com.example.bluescreen.models.Result;
 import com.squareup.picasso.Picasso;
 
 import org.jetbrains.annotations.NotNull;
 
-public class MoviePageListAdapter extends PagedListAdapter<Result,MoviePageListAdapter.MViewModel> {
+public class MoviePageListAdapter extends PagedListAdapter<Result,MoviePageListAdapter.MoviesViewModel> {
 
 private Boolean bigItem;
 
@@ -30,22 +31,16 @@ private Boolean bigItem;
 
     @NonNull
     @Override
-    public MViewModel onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        ItemVideoBinding itemVideoBinding;
-        if(bigItem) {
-            itemVideoBinding = DataBindingUtil.inflate(
-                    LayoutInflater.from(parent.getContext()), R.layout.item_big, parent, false
-            );
-            }else {
-             itemVideoBinding = DataBindingUtil.inflate(
+    public MoviesViewModel onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        ItemVideoBinding   itemVideoBinding = DataBindingUtil.inflate(
                     LayoutInflater.from(parent.getContext()), R.layout.item_video, parent, false
             );
-        }
-        return new MViewModel(itemVideoBinding);
+
+        return new MoviesViewModel(itemVideoBinding);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MViewModel holder, int position) {
+    public void onBindViewHolder(@NonNull MoviesViewModel holder, int position) {
          holder.bind(getItem(position));
     }
 
@@ -63,11 +58,11 @@ private Boolean bigItem;
                 }
             };
 
-    public class MViewModel extends RecyclerView.ViewHolder{
+    public class MoviesViewModel extends RecyclerView.ViewHolder{
         private String IMAGE_URL = "https://image.tmdb.org/t/p/";
-        private String IMAGE_SIZE = "w200";
+        private String IMAGE_SIZE = "w500";
         private ItemVideoBinding itemsBinding;
-        public MViewModel(ItemVideoBinding itemsBinding) {
+        public MoviesViewModel(ItemVideoBinding itemsBinding) {
             super(itemsBinding.getRoot());
 
             this.itemsBinding = itemsBinding;
@@ -77,7 +72,6 @@ private Boolean bigItem;
         public void bind(Result item) {
             if(item!=null){
                 String thumbURL = IMAGE_URL + IMAGE_SIZE + item.getBackdropPath();
-                //String thumbURL2 ="https://image.tmdb.org/t/p/w200/wwemzKWzjKYJFfCeiB57q3r4Bcm.png";
                 Picasso.get().load(thumbURL).into(itemsBinding.thumb);
                 itemsBinding.title.setText(item.getTitle());
             }

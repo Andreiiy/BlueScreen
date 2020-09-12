@@ -44,7 +44,7 @@ public class HomeFragment extends Fragment {
     private String location = "home";
     private View root;
    private ViewPager pager;
-    //private HomeViewModel homeViewModel;
+
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     public View onCreateView(@NonNull LayoutInflater inflater,
